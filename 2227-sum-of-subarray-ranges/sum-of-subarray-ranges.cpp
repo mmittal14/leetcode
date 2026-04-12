@@ -5,7 +5,7 @@ public:
         stack<int> s;
         vector<int> res(n,n);
         for(int i=n-1;i>=0;i--){
-            while(!s.empty() && arr[s.top()]>=arr[i]){ //equal to is important 
+            while(!s.empty() && arr[s.top()]>=arr[i]){ //equal to is important because of duplicate values
                 s.pop();
             }
             if(!s.empty()){
