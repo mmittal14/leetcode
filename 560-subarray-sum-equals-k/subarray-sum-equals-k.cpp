@@ -2,19 +2,15 @@ class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
         //sort(nums.begin(),nums.end());
-        int sum=0;
-        int count=0,i=0;
+        map<int,int> mp;
+        mp[0]=1;
+        int count=0,preSum=0;
         int n=nums.size();
-        for(int j=0;j<n;j++){
-            i=j;
-            sum=0;
-            while(i<n){
-                sum=sum+nums[i];
-                if(sum==k){
-                    count++;
-                }
-                i++;
-            }
+        for(int i=0;i<n;i++){
+            preSum+=nums[i];
+            int remove =preSum-k;
+            count+=mp[remove];
+            mp[preSum]+=1;
         }
         return count;
     }
